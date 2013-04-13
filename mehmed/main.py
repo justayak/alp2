@@ -1,1 +1,1 @@
-print "spastis, lol bin ich dumm (mehmed)"
+print "Julian ist ein Opfer"
