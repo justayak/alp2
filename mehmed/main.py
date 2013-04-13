@@ -1,1 +1,1 @@
-print "spastis"
+print "spastis, lol bin ich dumm (mehmed)"
