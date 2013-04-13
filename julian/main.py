@@ -1,1 +1,1 @@
-print "spastis"
+print "spastis memel spast"
