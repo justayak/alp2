@@ -1,1 +1,1 @@
-print "spastis"
+print "Julian ist ein Opfer"
