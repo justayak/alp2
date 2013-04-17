@@ -2,7 +2,7 @@ import random
 import sys
 import math
 
-#Testet, ob Drei Zahlen ein pythagoräisches Zahlentripel sind
+#Testet, ob Drei Zahlen ein pythagoraeisches Zahlentripel sind
 def pyth_nums(a,b,c):
 	return a*a+b*b==c*c or c*c+b*b==a*a or a*a+c*c==b*b
 
@@ -30,33 +30,33 @@ print(phy_triples(a))"""
 def wordcounter(eingabe):
 	woerterbuch={}
 	for i in range(0,len(eingabe)):	
-		if eingabe[i] not in woerterbuch:#prüft, ob Buchstabe schon im Dic ist
+		if eingabe[i] not in woerterbuch:#prueft, ob Buchstabe schon im Dic ist
 			temp=1
 			for j in range(i+1,len(eingabe)):
 				if eingabe[i]== eingabe[j]:
 					temp+=1
 			woerterbuch.update({eingabe[i]:temp})
 	return woerterbuch
-
-"""a=input("String eingeben: ")
-print(wordcounter(a))"""
-
+"""
+a=input("String eingeben: ")
+print(wordcounter(a))
+"""
 
 def gossip (n):
-	if n<=50:#Prüfen ob Eingabe kleiner 50
+	if n<=50:#Pruefen ob Eingabe kleiner 50
 		print("Zu kleine Zahl")
 	else:
 		liste=[]
 		opfer=0
 		aktiv=0
 		rand=random.randint(0,n-1)
-		opfer=rand#Opfer von Gerücht wird festgelegt
+		opfer=rand#Opfer von Geruecht wird festgelegt
 		rand=random.randint(0,n-1)
-		aktiv=rand#der, der mit Gerücht beginnt wird festgelegt
+		aktiv=rand#der, der mit Geruecht beginnt wird festgelegt
 		while aktiv==opfer:#wenn Opfer=Aktiv neuen Aktiven belegen
 			rand=random.randint(0,n-1)
 			aktiv=rand
-		while aktiv not in liste:#Prüft,dass Gleiche nicht 2X Gerücht erzählt
+		while aktiv not in liste:#Prueft,dass Gleiche nicht 2X Geruecht erzaehlt
 			liste.append(aktiv)
 			rand=random.randint(0,n-1)
 			if rand!=opfer:
@@ -65,7 +65,7 @@ def gossip (n):
 		
 		
 """	
-a=int(input("Gib die Gästeanzahl ein: "))
+a=int(input("Gib die Gaesteanzahl ein: "))
 print(gossip(a))
 
 liste=[]
@@ -77,7 +77,7 @@ for i in range(0,len(liste)):
 	sum+=liste[i]
 print(sum/len(liste))"""
 
-#Bei 51 Personen sind es im Durchschnitt 7,8 Personen die das Gerücht erfahren	
+#Bei 51 Personen sind es im Durchschnitt 7,8 Personen die das Geruecht erfahren	
 
 
 def print_char_picture(decide_char_func):
