@@ -1,5 +1,6 @@
 import random
 
+#shit happened
 def gossip (n):
 	if n<51:
 		return -1
