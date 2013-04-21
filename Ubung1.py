@@ -6,7 +6,7 @@ import math
 
 # Aufgabe 1a
 def pyth_nums(a,b,c):
-    """Überprueft ob es sich bei den eingegebenen Werten um ein sogenanntes Pythagoraeisches Zahlentripel handelt."""
+    """Ueberprueft ob es sich bei den eingegebenen Werten um ein sogenanntes Pythagoraeisches Zahlentripel handelt."""
     if ((a*a) + (b*b) == (c*c)):
     	return True
     else :
