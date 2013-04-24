@@ -30,12 +30,37 @@ def gossip (n):
 		return list.count(1)
 		
 		
-a = int(input("mach:"))
+		
+def gossipTimo(n):
+    #init
+    guestlist = [1] + ([0] * (n-2))    
+    #tell j times
+    previous = 0
+    while True:
+        listener = random.randint (0,(len(guestlist)-1))
+        if listener == previous:
+            continue
+        elif guestlist[listener] == 1:
+            break
+        else:
+            guestlist[listener] = 1
+            previous = listener	
+    return guestlist.count(1)
+	
+n = 55
+timo = 	gossipTimo(n)
+julian = gossip(n)
 
-total = []
-for i in range(0, 10000):
-	total.append(gossip(a))
+print("timo")
+print(timo)
+		
+if False:		
+	a = int(input("mach:"))
 
-avarage = sum(total) / len(total)
+	total = []
+	for i in range(0, 10000):
+		total.append(gossip(a))
 
-print("Druchschnitt: ", avarage)
+	avarage = sum(total) / len(total)
+
+	print("Druchschnitt: ", avarage)
