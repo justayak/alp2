@@ -1,10 +1,14 @@
 def mersenne(n):
+	assert(n>0)
 	base = 2
 	i=0
+	mersenne=0
 	while i<n:
+		assert(mersenne == (2**i)-1)
 		mersenne = base-1
 		base = base*2
 		i+=1
+	assert(mersenne==(2**n-1))
 	return mersenne
 
 a = int(input("Zahl eingeben:"))
@@ -18,6 +22,7 @@ def majority (array):
 	current = array[0]
 	i = 0
 	while i<len(array):
+		assert(i<=len(array) and count1 <= len(array) and len(array) >0)
 		if array[i]  == current:
 			count1 = count1 + 1
 		else:
@@ -29,6 +34,7 @@ def majority (array):
 	count2 = 0
 	i=0
 	while i<len(array):
+		assert(i<=len(array) and count2 <= len(array) and len(array) >0)
 		if array[i] == current:
 			count2 = count2 + 1
 		i+=1
