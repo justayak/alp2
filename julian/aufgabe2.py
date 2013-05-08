@@ -1,8 +1,4 @@
 #Aufgabe 1: n=44 Erg=[20,20,2,2]
-<<<<<<< HEAD
-#a.)
-sum = int(input('Bitte Summe eingeben: ');
-=======
 from collections import deque
 
 def change (n): 
@@ -32,4 +28,3 @@ for coin in money:
 	print(coin)
 	
 	
->>>>>>> 975ec6a464f706336cb8057eba820fe136eccb8e
