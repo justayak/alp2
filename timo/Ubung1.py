@@ -101,32 +101,20 @@ def chessboard(x,y,size):
 
 
 def gossip(n):
-    guestlist = []              #init leere guestlist
-    guestlist += [1]            #erster Gast erzeugt gerücht
-    for i in range(1,n-1):      #alle anderen haben das Gerücht nocht nicht gehört und werden mit 0 init
-        guestlist += [0]
-
-    #show list
-    #print(guestlist)
-    #print(len(guestlist))
-
-    next_one = 0                                            # variable, damit der Erzählende sich dasw Gerücht nicht selbst erzählt.
-    listener = 0                                            # listener für zufallsvariable
-    for j in range(n-1):                                    # geht das ganze max n-1 mal durch, wird aber weiter untern abgebrochen, falls einer das Gerücht schon kennt
-        while listener == 0 or listener == next_one:        # wenn listener == 0 ist oder der listener = der hörende(next_one) ist wird ein neuer Zufallswert erzeugt
-            listener = random.randint (0,(len(guestlist))-1)  # zuweisung Zufallswert der zwischen 0 und anzahl der guestlist
-            #print (listener)
-        if guestlist[listener] == 0:                        # wenn er das gerücht nicht kannte, kennt er es jetzt
-            guestlist[listener] = 1
-            next_one = listener
-        else:                                               # sonst fertig
+    #init
+    guestlist = [1] + ([0] * (n-2))
+    #tell j times
+    previous = 0
+    while True:
+        listener = random.randint (0,(len(guestlist)-1))
+        if listener == previous:
+            continue
+        elif guestlist[listener] == 1:
             break
-    n=0
-    #print(guestlist)
-    for k in range(len(guestlist)):                         # zählt anzahl, derjenigen, die es jetzt kennen.
-        if guestlist[k] == 1:
-            n += 1
-    return n
+        else:
+            guestlist[listener] = 1
+            previous = listener
+    return guestlist.count(1)
 
 def check_gossip(times, guests):
     anz = 0
