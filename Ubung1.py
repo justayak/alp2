@@ -94,41 +94,31 @@ def chessboard(x,y,size):
         return ' '
 
 def gossip(n):
-    guestlist = []
     #init
-    guestlist += [1]
-    for i in range(1,n-1):
-        guestlist += [0]
-
-    #show list
-    #print(guestlist)
-    #print(len(guestlist))
-
+    guestlist = [1] + ([0] * (n-2))    
     #tell j times
-    next_one = 0
-    listener = 0
-    for j in range(n-1):
-        while listener == 0 or listener == next_one:
-            listener = random.randint (0,(len(guestlist)-1))
-            #print (listener)
-        if guestlist[listener] == 0:
-            guestlist[listener] = 1
-            next_one = listener
-        else:
+    previous = 0
+    while True:
+        listener = random.randint (0,(len(guestlist)-1))
+        if listener == previous:
+            continue
+        elif guestlist[listener] == 1:
             break
-    n=0
-    #print(guestlist)
-    for k in range(len(guestlist)):
-        if guestlist[k] == 1:
-            n += 1
-    return n
+        else:
+            guestlist[listener] = 1
+            previous = listener	
+    return guestlist.count(1)
 
 def check_gossip(times, guests):
-    anz = 0
-    for i in range(1, times):
-        anz = anz + gossip(guests)
-    return anz, anz/times
+    a = int(input("mach:"))
+
+    total = []
+    for i in range(0, 10000):
+        total.append(gossip(a))
+
+    avarage = sum(total) / len(total)
+
+    print("Druchschnitt: ", avarage)
 
 # a) Bei 100.000 Testdurchläufen haben es 1.027.827 Gäste erfahren, im
 # Durchschnitt waren es dementsprechend 10.27827
-# Stochastik Aufgabe noch ergänzen !!!
