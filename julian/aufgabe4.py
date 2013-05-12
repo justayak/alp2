@@ -1,5 +1,6 @@
 import sys
 import random
+import math
 
 def run1():
 	def root(n):
@@ -122,7 +123,7 @@ def approxMedianPos(list, median):
 	for i,number in enumerate(list):
 		if number == median:
 			return i
-		if number > median:
+		if abs(number) > abs(median):
 			return i-1
 	raise Exception("lol hier haett ich nie hingedurft!")		
 
@@ -139,7 +140,8 @@ def miniSubsetSum(list):
 		if current == median:
 			result += (list[i], list[j])
 			
-		if current >= median:
+		print abs(current)
+		if abs(current) >=  abs(median):
 			j = j-1
 			i = i+1
 		else:
@@ -148,7 +150,9 @@ def miniSubsetSum(list):
 
 
 def run3():
-	result = miniSubsetSum([-3,1,2,3,4,5,6,7,8,9,10,100,66,77,12,55,55,12, 50, 50,43,23])
+	v = [-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12]
+	#v = [-3,1,2,3,4,5,6,7,8,9,10,100,66,77,12,55,55,12, 50, 50,43,23]
+	result = miniSubsetSum(v)
 	print result
 	
 run3()
