@@ -30,7 +30,7 @@ def run1():
 
 	rec(0, maxDepth)
 			
-	print rec(0, maxDepth)
+	#print rec(0, maxDepth)
 
 # Assert-Helper
 def isSorted(list):
