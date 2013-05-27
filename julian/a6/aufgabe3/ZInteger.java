@@ -17,6 +17,11 @@ class ZInteger {
 	public void print(){
 		System.out.println(" ( a: " + this.a + " | b: " + this.b + " --> v: " + this.value + "  ) ");
 	}
+
+    @Override
+    public String toString(){
+        return "(" + this.a + "," + this.b + ")";
+    }
 	
 	public ZInteger add(ZInteger other){
 		int b = this.a + other.a;
@@ -35,7 +40,7 @@ class ZInteger {
 		int a = this.a * other.b+ this.b * other.a;
 		return new ZInteger(a,b);
 	}
-	
+
 	public ZInteger simplify(){
 		int a = -1;
 		int b = -1;
@@ -48,7 +53,49 @@ class ZInteger {
 		}
 		return new ZInteger(a,b);		
 	}
-	
-	
 
+    /**
+     * ==
+     * @param other
+     * @return
+     */
+	public boolean equals(ZInteger other){
+        return this.value == other.value;
+    }
+
+    /**
+     * >=
+     * @param other
+     * @return
+     */
+    public boolean greaterOrEqual(ZInteger other){
+        return this.value >= other.value;
+    }
+
+    /**
+     * <=
+     * @param other
+     * @return
+     */
+    public boolean lessOrEqual(ZInteger other){
+         return this.value <= other.value;
+    }
+
+    /**
+     * <
+     * @param other
+     * @return
+     */
+    public boolean less(ZInteger other){
+        return this.value < other.value;
+    }
+
+    /**
+     * >
+     * @param other
+     * @return
+     */
+    public boolean greater(ZInteger other){
+        return this.value > other.value;
+    }
 }
