@@ -1,5 +1,7 @@
 #Aufgabe 5		
 def miniSubsetSum(list):
+	# Stellt euch einfach vor, das ist der Sort-Alg
+	# aus den Ausgaben vorher... 
 	list = sorted(list)  #Timsort:  				O(n*log(n))
 	median = sum(list) // len(list)  #				O(n)
 	print (median)
