@@ -2,7 +2,6 @@ package a6;
 
 public class Linien {
     public static void main(String[] args) {
-        double t = Math.sqrt(3.0) / 2.0;
         for (int i = 0; i < 50; i = i + 1) {
             float z = (float) i;
             StdDraw.setPenColor(StdDraw.BLACK);

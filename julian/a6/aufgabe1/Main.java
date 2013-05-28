@@ -28,6 +28,7 @@ public class Main {
             System.out.println(result[i]);
         }
 
+        System.out.println("[PRESS ANY KEY]");
         System.in.read();
     }
 
