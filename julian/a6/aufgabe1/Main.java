@@ -1,6 +1,7 @@
 package a6.aufgabe1;
 
-import java.util.Random;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,20 +12,29 @@ import java.util.Random;
  */
 public class Main {
 
-    public static void main(String[]args){
+    public static void main(String[]args) throws IOException {
 
         Matrix m = new Matrix(30,30);
-
         m.randomize();
 
         System.out.println(m);
 
+        Result[] result = find(m);
 
+
+        System.out.println(result.length);
+
+        for (int i = 0; i < result.length; i++){
+            System.out.println(result[i]);
+        }
+
+        System.in.read();
     }
 
-    private static void find(Matrix matrix){
+    private static Result[] find(Matrix matrix){
 
         Matrix temp = new Matrix(matrix.height, matrix.width);
+        List<Result> results = new ArrayList<Result>();
 
         for (int y=0; y<temp.height;y++){
             for (int x=0;x<temp.width;x++){
@@ -32,20 +42,50 @@ public class Main {
                 if (matrix.is1(x,y) && !temp.is1(x,y)){
 
                     temp.set(x,y,1);
-                    int currentX = x-1;
-                    int currentY = y-1;
+                    int currentX = x+1;
+                    int currentY = y+1;
+                    boolean subtract1 = false;
                     while( matrix.get(currentX,currentY) == 1 ){
-                        currentX = currentX -1;
-                        currentY = currentY -1;
+                        subtract1 = true;
+                        temp.set(currentX,currentY,1);
+                        currentX = currentX + 1;
+                        currentY = currentY + 1;
                     }
 
+                    int sideLength = subtract1 ? currentX - x: currentX - x;
 
-
+                    if (matrix.is1Quad(x,y,sideLength, sideLength)){
+                        temp.set1Quad(x,y,sideLength, sideLength);
+                        results.add(new Result(x,y,sideLength));
+                    }
                 }
 
             }
         }
 
+        Collections.sort(results);
+        return results.toArray(new Result[0]);
+    }
+
+    private static class Result implements Comparable<Result> {
+        public final int X;
+        public final int Y;
+        public final int SideLength;
+        public Result(int x, int y, int sideLength){
+            this.X = x;
+            this.Y = y;
+            this.SideLength = sideLength;
+        }
+
+        @Override
+        public String toString(){
+            return "{" + this.X + "," + this.Y + ", sl:" + this.SideLength + "}";
+        }
+
+        @Override
+        public int compareTo(Result o) {
+            return Integer.compare(this.SideLength, o.SideLength);
+        }
     }
 
     private static class Matrix{
@@ -62,10 +102,29 @@ public class Main {
 
         public void randomize(){
             Random random = new Random();
-            while (random.nextInt(1000)>1){
+            while (random.nextInt(6500)>1){
                 int pos = random.nextInt(this.data.length);
                 this.data[pos] = 1;
             }
+        }
+
+        public void set1Quad(int x, int y, int width,int height){
+            for (int mx = x; mx < x+width; mx++){
+                for (int my = y; my < y+height; my++){
+                    this.set(mx,my,1);
+                }
+            }
+        }
+
+        public boolean is1Quad(int x,int y,int width,int height){
+            for (int mx = x; mx < x+width; mx++){
+                for (int my = y; my < y+height; my++){
+                    if (!this.is1(mx, my)){
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         public int get(int x, int y){
@@ -81,12 +140,13 @@ public class Main {
 
         public boolean is1(int x, int y){
             int pos = (y*this.width) + x;
+            if (pos >= this.data.length) return false;
             return this.data[pos] == 1;
         }
 
         public void set(int x, int y, int value){
-            if (x >= 0 && y >= 0){
-                int pos = (y*this.width) + x;
+            int pos = (y*this.width) + x;
+            if(pos < this.data.length){
                 this.data[pos] = value;
             }
         }
@@ -108,7 +168,6 @@ public class Main {
                         builder.append( this.data[pos]);
                     }
                     builder.append  ("\t");
-                    //builder.append(x > 9 ? "\t" : "\t\t");
                 }
                 builder.append("\n");
             }
