@@ -29,23 +29,17 @@ public class Main {
         for (int y=0; y<temp.height;y++){
             for (int x=0;x<temp.width;x++){
 
-                if (matrix.is1(x,y)){
+                if (matrix.is1(x,y) && !temp.is1(x,y)){
 
-                    int v = 0;
-
-                    if (temp.get(x-1,y-1) > 0){
-
-
-                        if (temp.get(x,y) == 0 ){
-
-                        }
-
-
-                    }else{
-                        v = temp.get(x-1,y) + 1;
+                    temp.set(x,y,1);
+                    int currentX = x-1;
+                    int currentY = y-1;
+                    while( matrix.get(currentX,currentY) == 1 ){
+                        currentX = currentX -1;
+                        currentY = currentY -1;
                     }
 
-                    temp.set(x,y,v);
+
 
                 }
 
@@ -75,11 +69,13 @@ public class Main {
         }
 
         public int get(int x, int y){
-            if (x >= 0 && y >= 0){
+            if (x < 0 || y < 0){
+                return 0;
+            } else if (x >= this.width || y >= this.height){
+                return 0;
+            }else{
                 int pos = (y*this.width) + x;
                 return this.data[pos];
-            }else{
-                return 0;
             }
         }
 
