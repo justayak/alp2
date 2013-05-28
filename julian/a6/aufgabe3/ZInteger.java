@@ -24,14 +24,14 @@ class ZInteger {
     }
 	
 	public ZInteger add(ZInteger other){
-		int b = this.a + other.a;
-		int a = this.b + other.b;
+		int a = this.a + other.a;
+		int b = this.b + other.b;
 		return new ZInteger(a,b);		
 	}
 	
 	public ZInteger subtract(ZInteger other){
-		int a = this.a + other.b;
-		int b = this.b + other.a;
+		int a = this.a - other.a;
+		int b = this.b - other.b;
 		return new ZInteger(a,b);
 	}
 	
@@ -45,10 +45,10 @@ class ZInteger {
 		int a = -1;
 		int b = -1;
 		if( this.a > this.b){
-			a = a - b;
+			a = this.a - this.b;
 			b = 0;
 		}else{
-			b = b -a;
+			b = this.b - this.a;
 			a = 0;		
 		}
 		return new ZInteger(a,b);		
