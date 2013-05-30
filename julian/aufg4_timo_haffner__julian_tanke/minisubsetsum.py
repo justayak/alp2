@@ -1,40 +1,17 @@
-#Aufgabe 5	
-
-def miniSubsetSumAlt(list):
-	list = sorted(list)  #Timsort:  				O(n*log(n))
-	median = sum(list) // len(list)  #				O(n)
-	#
-	print (median)
-	i =  0 if median >= 0 else len(list)-1
-	acc = 1 if median >= 0 else -1
-	end =  len(list)-1 if median >= 0 else len(list)-1
-	result = []		
-	while i < end if median >= 0 else i > end:
-		print (i)
-		j = i + acc
-		while j < end if median >= 0 else j > end:			
-			current = list[i] + list[j]		
-			if current == median:
-				result.append((list[i], list[j]))
-				break			
-			if current >  median:
-				break
-			j = j + acc
-		i = i + acc
-	return result
-	
+#Aufgabe 5		
 def miniSubsetSum(list):
+	# Stellt euch einfach vor, das ist der Sort-Alg
+	# aus den Ausgaben vorher... 
 	list = sorted(list)  #Timsort:  				O(n*log(n))
 	median = sum(list) // len(list)  #				O(n)
-	#
 	print (median)
 	i =  0 
 	acc = 1 
 	end =  len(list)-1 
 	result = []		
-	while i < end:
+	while i < end:							#		O(n-1)
 		j = i + acc
-		while j < end:			
+		while j < end:						#		O(n-2)
 			current = list[i] + list[j]		
 			if current == median:
 				result.append((list[i], list[j]))
