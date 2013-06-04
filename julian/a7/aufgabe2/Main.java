@@ -100,8 +100,8 @@ public class Main {
          * @return Wahrscheinlichkeit
          */
         public double probability(){
-            double result = 0;
-            for (int i = 1; i < this.persons.length;i++){
+            double result = 1;
+            for (double i = 2; i < this.persons.length;i++){
                 result *= 1.0/i;
             }
             return result;
