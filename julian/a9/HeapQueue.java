@@ -25,13 +25,18 @@ public class HeapQueue<P extends Comparable<P>,D> {
     // P R I V A T E
     // ========================
 
-    private class Data<P extends Comparable<P>,D>{
+    private class Data<P extends Comparable<P>,D> implements Comparable<Data<P,D>> {
         public final P Key;
         public final D Data;
 
         public Data(P key, D data){
             this.Key = key;
             this.Data = data;
+        }
+
+        @Override
+        public int compareTo(HeapQueue.Data o) {
+            return this.Key.compareTo((P)o.Key);
         }
     }
 
