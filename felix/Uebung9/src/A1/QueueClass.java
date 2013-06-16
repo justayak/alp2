@@ -1,5 +1,6 @@
 package A1;
 
+import java.lang.StringBuilder;
 import java.util.ArrayList;
 
 public class QueueClass<Elem> implements Queue<Elem>{
@@ -48,9 +49,13 @@ public class QueueClass<Elem> implements Queue<Elem>{
 	}
 	
 	public String toString(){
-		
-		
-		return null;
+        StringBuilder sb = new StringBuilder();
+        for (Elem e : this.queue){
+            sb.append("|");
+            sb.append(e.toString());
+            sb.append("|");
+        }
+		return sb.toString();
 		
 	}
 
