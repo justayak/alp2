@@ -13,6 +13,12 @@ public class A2Main {
         HeapQueue<Integer, String> h = new HeapQueue<Integer, String>();
 
         h.store(12,"hallo");
+        h.store(2,"Felix");
+        h.store(3,"Julian");
+        h.store(14,"Memel");
+        h.store(24,"Timo");
+
+        System.out.println(h.toString());
 
     }
 }

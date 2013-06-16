@@ -34,13 +34,24 @@ public final class HeapQueue<P extends Comparable<P>,D> {
         return null;
     }
 
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i <= this.current; i++){
+            Data d = this.array[i];
+            sb.append("<");
+            sb.append("k:");
+            sb.append(d.Key);
+            sb.append("  d:");
+            sb.append(d.Data);
+            sb.append(">");
+        }
+        return sb.toString();
+    }
+
     // ========================
     // P R I V A T E
     // ========================
-
-    private void heapify(){
-
-    }
 
     private void heapify(int p){
         int left = this.left(p);
@@ -61,6 +72,7 @@ public final class HeapQueue<P extends Comparable<P>,D> {
             Data<P,D> temp = this.array[biggest];
             this.array[biggest] = this.array[p];
             this.array[p] = temp;
+            this.heapify(biggest);
         }
     }
 
